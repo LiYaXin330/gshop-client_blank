@@ -6,12 +6,19 @@
 </template>
 <script>
   import FooterGuide from './components/FooterGuide/FooterGuide.vue'
-
+  import axios from 'axios'
   export default {
-    data() {
-      return {}
-    },
 
+    mounted() {
+      //芬芳 action发ajax获取address数据
+      this.$store.dispatch('getAddress')
+      //分发给action发ajax获取user
+      this.$store.dispatch('getUser')
+
+      axios.get('/goods').then(response => {
+        console.log(response.data)
+      })
+    },
     components: {
       FooterGuide
     }
